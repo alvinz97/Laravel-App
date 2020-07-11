@@ -32,7 +32,7 @@
                 <a href="" class="img logo mb-5" style="background-image: url({{ asset('images/fav-icon.png')}});"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                        <a href="">Dashboard</a>
+                        <a href="/">Dashboard</a>
                     </li>
                     <li>
                         <a href="#link1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Link 01</a>
@@ -46,10 +46,10 @@
                         </ul>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="#link2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Link 02</a>
                         <ul class="collapse list-unstyled" id="link2">
-                            <li class="active">
+                            <li>
                                 <a href="sub-link3">Sub Link 03</a>
                             </li>
                             <li>
@@ -77,7 +77,7 @@
         </nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4">
+        <div id="content" class="p-2">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-custome-nav">
                 <div class="container-fluid">

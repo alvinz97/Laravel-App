@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = [
+        'current_sign_in_at' , 'last_sign_in_at', 'logged_out_at',
+    ];
 }
