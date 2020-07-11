@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- Favicon  --}}
+    <link rel="shortcut icon" href="{{ asset('images/fav-icon.png') }}" type="image/x-icon">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,6 +14,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/custom.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,26 +22,76 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+     <div class="wrapper d-flex align-items-stretch" id="app">
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <a href="" class="img logo mb-5" style="background-image: url({{ asset('images/fav-icon.png')}});"></a>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#link1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Link 01</a>
+                        <ul class="collapse list-unstyled" id="link1">
+                            <li>
+                                <a href="sub-link1">Sub Link 01</a>
+                            </li>
+                            <li>
+                                <a href="sub-link2">Sub Link 02</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                    </ul>
+                    <li class="active">
+                        <a href="#link2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Link 02</a>
+                        <ul class="collapse list-unstyled" id="link2">
+                            <li class="active">
+                                <a href="sub-link3">Sub Link 03</a>
+                            </li>
+                            <li>
+                                <a href="sub-link4">Sub Link 04</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="#link3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Link 03</a>
+                        <ul class="collapse list-unstyled" id="link3">
+                            <li>
+                                <a href="sub-link5">Sub Link 05</a>
+                            </li>
+                            <li>
+                                <a href="sub-link6">Sub Link 01</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-custome-nav">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -54,12 +108,17 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/profile">
+                                        {{ __('Profile') }} &nbsp; <i class="fa fa-user"></i>
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Logout') }} &nbsp; <i class="fa fa-sign-out"></i>
                                     </a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -68,13 +127,20 @@
                             </li>
                         @endguest
                     </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <!-- Page contanet start  -->
+
+            <main class="py-4">
+                @yield('content')
+            </main>
+
+            <!-- Page contanet end  -->
+
+        </div>
     </div>
+    
 </body>
 </html>
