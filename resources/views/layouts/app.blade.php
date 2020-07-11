@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -105,19 +105,36 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @if (auth()->user()->img_url == 'not.jpg')
+                                        <img src="storage/public/avatars/not.jpg" alt="{{ auth()->user()->name }} Profile Image" class="img-fluid rounded-circle width-30 height-30 mr-2">
+                                
+                                        @else 
+                                        <img src="storage/public/avatars/{{auth()->user()->id}}/{{auth()->user()->img_url }}" alt="{{ auth()->user()->name }} Profile Image" class="img-fluid rounded-circle width-30 height-30 mr-2">
+                                    @endif
+
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                   
+                                    <a class="dropdown-item" href="/lock">
+                                        {{ __('Lock') }} &nbsp; <i class="fa fa-lock"></i>
+                                    </a>
+
+                                    <hr class="hr-1">
+
                                     <a class="dropdown-item" href="/profile">
                                         {{ __('Profile') }} &nbsp; <i class="fa fa-user"></i>
                                     </a>
+
+                                    <hr class="hr-1">
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }} &nbsp; <i class="fa fa-sign-out"></i>
                                     </a>
+
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
