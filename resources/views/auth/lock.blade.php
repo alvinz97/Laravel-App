@@ -30,8 +30,8 @@
         <div class="row">
             <div class="col-lg-6" style="background-color: #ebeeff">
                 <div class="pb-3">
-                    <div class="row justify-content-center mt-10">
-                        <div class="col-lg-6 text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 text-center mt-10">
                             <div class="company-name mb-3">
                                 <div class="brand-name">
                                     <h4>Company Name</h4>
@@ -90,8 +90,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-
+            <div class="col-lg-6" id="lock-right">
+                <div class="text-container text-center">
+                    <div class="text-bg-custom">
+                        <h1>Account Locked</h1>
+                        <h3>Please Enter Your Password To Unlock</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

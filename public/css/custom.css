@@ -262,7 +262,7 @@ a:hover {
   margin-bottom: 10%;
 }
 #lockScreenContainer .row{
-  height: 100vh;
+  height: 97.7vh;
 }
 .custom-card .form {
   padding: 30px;
@@ -307,4 +307,29 @@ a:hover {
   #authBody {
     height: 90vh;
   }
+}
+
+#lock-right {
+  background: url('../images/lock-screen.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#lock-right .text-container {
+  position: absolute;
+  top: 45%;
+  left: 25%;
+  color: #fff;
+}
+
+#lock-right .text-container h1 {
+  font-weight: 900;
+}
+
+#lock-right .text-container .text-bg-custom {
+  background-color: rgba(0, 255, 255, 0.247);
+  border-radius: 5px;
+  padding: 20px;
 }
