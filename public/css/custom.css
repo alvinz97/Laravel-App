@@ -249,3 +249,18 @@ a:hover {
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.mt-10 {
+  margin-top: 10%;
+}
+.mb-10 {
+  margin-bottom: 10%;
+}
+
+.mx-10 {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+#lockScreenContainer .row{
+  height: 100vh;
+}
