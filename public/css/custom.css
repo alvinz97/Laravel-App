@@ -264,3 +264,47 @@ a:hover {
 #lockScreenContainer .row{
   height: 100vh;
 }
+.custom-card form {
+  padding: 30px;
+}
+
+.brandName img {
+    width: 85px;
+    height: 95px;
+}
+
+#custom-login .form input::after {
+    border: none;
+}
+
+#custom-login .form input {
+    margin-bottom: 2px;
+    border-radius: 0%;
+    padding: 20px 0px 20px 0px;
+    border: none;
+    border-bottom: 1px solid rgb(8, 163, 235);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#authBody .container .row  {
+    margin-top: 70px;
+}
+
+#authBody {
+  background-color: rgb(221, 209, 207);
+}
+
+@media (max-width: 1025px) {
+  #authBody {
+    height: 90vh;
+  }
+}
+@media (max-width: 376px) {
+  #authBody {
+    height: 90vh;
+  }
+}
+@media (max-width: 319px) {
+  #authBody {
+    height: 90vh;
+  }
+}
