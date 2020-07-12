@@ -264,7 +264,7 @@ a:hover {
 #lockScreenContainer .row{
   height: 100vh;
 }
-.custom-card form {
+.custom-card .form {
   padding: 30px;
 }
 
