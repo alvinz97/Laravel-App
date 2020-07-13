@@ -4,10 +4,30 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-           <h1> Welcome to profile</h1>
+        <div class="col-md-8 text-center mt-2">
+           <div class="custom-card pb-3">
+                <table class="table table-hover table-stripe">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Logged In</th>
+                            <th scope="col">Logged Out</th>
+                            <th scope="col">Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td scope="row">Mark</td>
+                            <td scope="row">Otto</td>
+                            <td scope="row">@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+           </div>
         </div>
-        <div class="col-md-4 text-center">
+
+        <div class="col-md-4 text-center mt-2">
            <div class="custom-card pb-3">
                 <div class="text-center">
                     @if (auth()->user()->img_url == 'not.jpg')
@@ -34,7 +54,7 @@
                 <hr class="hr-2">
 
                 <div class="user-info">
-                    <h3>{{ auth()->user()->name }}</h3>
+                    <h4>{{ auth()->user()->name }}</h4>
                     <p><a href="mailto:{{ auth()->user()->email }}">{{ auth()->user()->email }}</a></p>
                 </div>
 
