@@ -269,20 +269,26 @@ a:hover {
 }
 
 .brandName img {
-    width: 85px;
-    height: 95px;
+    width: 65px;
+    height: 75px;
 }
 
 #custom-login .form input::after {
     border: none;
 }
 
-#custom-login .form input {
+#custom-login .form input{
     margin-bottom: 2px;
     border-radius: 0%;
-    padding: 20px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
     border: none;
     border-bottom: 1px solid rgb(8, 163, 235);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#custom-login .form select {
+    border: none;
+     border-bottom: 1px solid rgb(8, 163, 235);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 #authBody .container .row  {

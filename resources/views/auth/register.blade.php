@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter Your Name">
+                            <input id="name" type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter Your Name">
 
                                 @error('name')
                                     <span class="invalid-feedback text-left" role="alert">
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Your Email">
+                            <input id="email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Your Email">
 
                                 @error('email')
                                     <span class="invalid-feedback text-left" role="alert">
@@ -58,7 +58,37 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter Password">
+                            <select class="form-control form-control-sm @error('jobTitle') is-invalid @enderror" name="jobTitle" value="{{ old('jobTitle') }}" required>
+                                <option selected disabled> -- SELECT JOB TITLE --</option>
+                                <option value="1">Manager</option>
+                                <option value="2">Accounter</option>
+                                <option value="3">Sales Man</option>
+                                <option value="4">Cleaner</option>
+                            </select>
+
+                                @error('jobTitle')
+                                    <span class="invalid-feedback text-left" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control form-control-sm @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required>
+                                <option selected disabled> -- SELECT GENDER --</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+
+                                @error('gender')
+                                    <span class="invalid-feedback text-left" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <input id="password" type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter Password">
 
                                 @error('password')
                                     <span class="invalid-feedback text-left" role="alert">
@@ -68,7 +98,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Enter Confirm Password">
+                            <input id="password-confirm" type="password" class="form-control form-control-sm" name="password_confirmation" required autocomplete="new-password" placeholder="Enter Confirm Password">
                         </div>
 
                         <div class="form-group">
