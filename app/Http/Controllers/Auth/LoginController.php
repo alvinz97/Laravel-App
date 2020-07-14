@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\LoginHistory;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -64,6 +66,11 @@ class LoginController extends Controller
                 'Your password does not match your profile.'
             ]);
         }
+
+        return LoginHistory::create([
+            'user_id' => auth()->user()->id,
+            'logged_at' => Carbon::now(),
+        ]);
 
         session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);
 

@@ -16,12 +16,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td scope="row">Mark</td>
-                            <td scope="row">Otto</td>
-                            <td scope="row">@mdo</td>
-                        </tr>
+                        {{-- @if (count($histories) > 0)
+                            @foreach ($histories as $history)
+                                <tr>
+                                    <th scope="row">{{$history->id}}</th>
+                                    <th scope="row">{{$history->logged_at}}</th>
+                                    <th scope="row">{{$history->logged_out_at}}</th>
+                                    <th scope="row"></th>
+                                </tr>
+                            @endforeach
+                            {{$histories->links()}}
+                        @else
+                            <h3>No Post Found</h3>
+                        @endif --}}
                     </tbody>
                 </table>
            </div>

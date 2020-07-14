@@ -76,8 +76,8 @@
                         <div class="form-group">
                             <select class="form-control form-control-sm @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required>
                                 <option selected disabled> -- SELECT GENDER --</option>
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
                             </select>
 
                                 @error('gender')

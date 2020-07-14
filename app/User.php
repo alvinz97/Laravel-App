@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'jobTitle', 'gender',
     ];
 
     /**
@@ -42,4 +42,8 @@ class User extends Authenticatable
     protected $dates = [
         'current_sign_in_at' , 'last_sign_in_at', 'logged_out_at',
     ];
+
+    public function histories(){
+        return $this->hasMany('App\LoginHistory');
+    }
 }
