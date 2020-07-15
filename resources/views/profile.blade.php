@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($histories) > 0)
+                        {{-- @if (count($histories) > 0)
                             @foreach ($histories as $history)
                                     <tr>
                                         <th scope="row">{{$history->id}}</th>
@@ -28,7 +28,7 @@
                             {{$histories->links()}}
                         @else
                             <h3>No Post Found</h3>
-                        @endif
+                        @endif --}}
                     </tbody>
                 </table>
            </div>
