@@ -29,7 +29,9 @@
      <div class="wrapper d-flex align-items-stretch" id="app">
         <nav id="sidebar">
             <div class="p-4 pt-5">
-                <a href="" class="img logo mb-5" style="background-image: url({{ asset('images/fav-icon.png')}});"></a>
+                <a href="/home">
+                    <img src="{{ asset('images/fav-icon.png')}}" alt="" class="img logo mb-5">
+                </a>
                 <ul class="list-unstyled components mb-5">
                     <li>
                         <a href="/">Dashboard</a>

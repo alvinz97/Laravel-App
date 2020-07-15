@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class LoginHistoryController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,12 +60,6 @@ class LoginHistoryController extends Controller
      */
     public function show($id)
     {
-        $history = LoginHistory::find($id);
-
-        // Check if correct user land on the page 
-        if (auth()->user()->id == $history->user_id) {
-            return view('profile')->with('histories', $history);
-        }
         
     }
 

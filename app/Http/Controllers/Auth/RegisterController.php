@@ -68,17 +68,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $result = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'jobTitle' => $data['jobTitle'],
             'gender' => $data['gender'],
-        ]);
 
-        return LoginHistory::create([
-            'user_id' => auth()->user()->id,
-            'logged_at' => Carbon::now(),
         ]);
+        return $result;
+
+        if($result == true){
+             return LoginHistory::create([
+                'user_id' => auth()->user()->id,
+                'logged_at' => Carbon::now(),
+         ]);
+        }
+
+        
     }
 }

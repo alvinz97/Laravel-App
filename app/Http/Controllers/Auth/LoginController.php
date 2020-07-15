@@ -48,7 +48,7 @@ class LoginController extends Controller
 
     public function locked() {
         if(!session('lock-expires-at')){
-            return redirect('/');
+            return redirect('/home');
         }
 
         if(session('lock-expires-at') > now()){
@@ -67,13 +67,24 @@ class LoginController extends Controller
             ]);
         }
 
-        return LoginHistory::create([
-            'user_id' => auth()->user()->id,
-            'logged_at' => Carbon::now(),
-        ]);
-
         session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);
 
         return redirect('/');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $history = new LoginHistory;
+        $history->user_id = $request->auth()->user()->id;
+        $history->logged_at = Carbon::now();
+        $history->save();
+
+        return redirect('/post');
     }
 }
