@@ -85,6 +85,6 @@ class LoginController extends Controller
         $history->logged_at = Carbon::now();
         $history->save();
 
-        return redirect('/post');
+        return redirect('/');
     }
 }

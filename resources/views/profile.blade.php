@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('title', 'Profile')
 
 @section('content')
@@ -18,12 +18,12 @@
                     <tbody>
                         {{-- @if (count($histories) > 0)
                             @foreach ($histories as $history)
-                                    <tr>
-                                        <th scope="row">{{$history->id}}</th>
-                                        <th scope="row">{{$history->logged_at}}</th>
-                                        <th scope="row">{{$history->logged_out_at}}</th>
-                                        <th scope="row"></th>
-                                    </tr>
+                                <tr>
+                                    <th scope="row">{!! $history->id !!}</th>
+                                    <th scope="row">{!! $history->logged_at !!}</th>
+                                    <th scope="row">{!! $history->logged_out_at !!}</th>
+                                    <th scope="row"></th>
+                                </tr>
                             @endforeach
                             {{$histories->links()}}
                         @else

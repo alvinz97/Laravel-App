@@ -15,7 +15,10 @@ class CreateLoginHistoriesTable extends Migration
     {
         Schema::create('login_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')
+                    ->on('users');
+            
             $table->timestamp('logged_at')->nullable();
             $table->timestamp('logged_out_at')->nullable();
             $table->timestamps();

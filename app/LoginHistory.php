@@ -7,12 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class LoginHistory extends Model
 {
     protected $table = 'login_histories';
-    protected $primaryKey = 'id';
-    protected $timestamp = true;
 
-    // protected $fillable = [
-    //     'user_id','logged_at', 'logged_out_at',
-    // ];
+    protected $fillable = ['user_id', 'logged_at', 'logged_out_at'];
+
 
     public function user()
     {

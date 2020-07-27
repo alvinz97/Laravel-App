@@ -14,7 +14,7 @@ class AddLoggedOutAtToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('logged_out_at')->nullable()->after('current_sign_in_at');
+            // $table->timestamp('logged_out_at')->nullable()->after('current_sign_in_at');
         });
     }
 

@@ -27,7 +27,7 @@
 <body>
 
     <div class="container-fluid" id="lockScreenContainer">
-        <div class="row">
+        <div class="row"  id="app">
             <div class="col-lg-6" style="background-color: #ebeeff">
                 <div class="pb-3">
                     <div class="row justify-content-center">

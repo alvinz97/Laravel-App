@@ -25,10 +25,8 @@ class LoginHistoryController extends Controller
      */
     public function index()
     {
-        $histories = LoginHistory::orderBy('id', 'desc')->paginate(10);
-        if (auth()->user()->id == $histories->user_id) {
-            return view('profile')->with('histories', $histories);
-        }
+        $histories = LoginHistory::all();
+        return view('profile')->with('histories', $histories);
     }
 
     /**
