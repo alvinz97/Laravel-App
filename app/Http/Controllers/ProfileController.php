@@ -46,4 +46,15 @@ class ProfileController extends Controller
             $user->save();
         return view('profile', array('user' => Auth::user()));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

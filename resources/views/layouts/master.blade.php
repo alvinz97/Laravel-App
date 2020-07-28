@@ -118,10 +118,15 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('images/fav-icon.png')}}" class="img-circle elevation-2" alt="User Image">
+           @if (auth()->user()->img_url == 'not.jpg')
+                <img src="storage/public/avatars/not.jpg" class="img-circle elevation-2" alt="User Image">
+        
+                @else 
+                <img src="storage/public/avatars/{{auth()->user()->id}}/{{auth()->user()->img_url }}" class="img-circle elevation-2" alt="User Image">
+            @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="/profile" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 

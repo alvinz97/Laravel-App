@@ -25,7 +25,7 @@ class LoginHistoryController extends Controller
      */
     public function index()
     {
-        $histories = LoginHistory::all();
+        $histories = LoginHistory::orderBy('id', 'desc')->paginate(10);
         return view('profile')->with('histories', $histories);
     }
 
