@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\LoginHistoryController;
 
 class RegisterController extends Controller
 {
@@ -68,28 +69,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'jobTitle' => $data['jobTitle'],
             'gender' => $data['gender'],
 
-        ]);  
-    }
-
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\LoginHistory
-     */
-    protected function store() {
-
-        return LoginHistory::create([
-            'user_id' => auth()->user()->id,
-            'logged_at' => Carbon::now(),
         ]);
+
+        $historyController = new LoginHistoryController;
+        $resultLog = $historyController->create($user->id);
+
+        return $user and $resultLog;
     }
 }

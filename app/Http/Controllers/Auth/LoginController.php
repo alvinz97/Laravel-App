@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use App\LoginHistory;
+use App\Http\Controllers\LoginHistoryController;
 use App\Providers\RouteServiceProvider;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -44,9 +44,11 @@ class LoginController extends Controller
             'locked',
             'unlock'
         ]);
+        
     }
-
+    
     public function locked() {
+
         if(!session('lock-expires-at')){
             return redirect('/home');
         }
@@ -59,6 +61,10 @@ class LoginController extends Controller
     }
 
     public function unlock(Request $request){
+
+        $historyController = new LoginHistoryController;
+        return $historyController->create(Auth::id());
+
         $check = Hash::check($request->input('password'), $request->user()->password);
 
         if (!$check) {
@@ -72,19 +78,4 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $history = new LoginHistory;
-        $history->user_id = $request->auth()->user()->id;
-        $history->logged_at = Carbon::now();
-        $history->save();
-
-        return redirect('/');
-    }
 }

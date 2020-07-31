@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LoginHistory;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class LoginHistoryController extends Controller
 {
@@ -34,9 +35,14 @@ class LoginHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $history = new LoginHistory();
+        $history->user_id = $id;
+        $history->logged_at	=  Carbon::now();
+        $history->save();
+
+        return redirect('/home');
     }
 
     /**
