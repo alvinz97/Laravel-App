@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginHistoryController;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -76,6 +78,51 @@ class LoginController extends Controller
         session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);
 
         return redirect('/');
+    }
+
+    protected function credentials(Request $request)
+    {
+        $user = User::select('*')->where('email', $request->{$this->username()})->first();
+        $user_id = $user->id;
+
+        $this->getId($user_id);
+
+        return [
+            'email' => $request->{$this->username()},
+            'password' => $request->password,
+        ];
+
+        // return $cre and $histories;
+    }
+
+    public function getId($id) {
+        $historyController = new LoginHistoryController;
+        return $historyController->create($id);
+    }
+
+    public function sendID($user_id)
+    {
+        $historyController = new LoginHistoryController;
+        return $historyController->setLogoutTime($user_id);
+    }
+
+    public function logout(Request $request)
+    {
+        $this->sendID(auth()->user()->id);
+
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new Response('', 204)
+            : redirect('/');
     }
 
 }
