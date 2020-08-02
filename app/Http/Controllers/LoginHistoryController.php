@@ -26,12 +26,8 @@ class LoginHistoryController extends Controller
      */
     public function index()
     {
-        $histories = LoginHistory::orderBy('id', 'desc')->paginate(10);
-        return view('profile')->with('histories', $histories);
+        
 
-        $user_id = auth()->user()->id;
-        $histories = LoginHistory::find($user_id);
-        return view('home')->with('histories', $histories->posts);
     }
 
     /**
@@ -52,7 +48,7 @@ class LoginHistoryController extends Controller
     public function setLogoutTime($user_id)
     {
         // $history = LoginHistory::find($user_id);
-        $history = LoginHistory::select('*')->where('user_id', $user_id)->first();
+        $history = LoginHistory::select('*')->where('user_id', $user_id)->latest()->first();
         $history->logged_out_at = Carbon::now();
         $history->save();
 

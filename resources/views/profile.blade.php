@@ -16,21 +16,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @if (count($histories) > 0)
+                        
+                        @if (count($histories) > 0)
                             @foreach ($histories as $history)
                                 <tr>
-                                    <th scope="row">{{ $history->id }}</th>
-                                    <th scope="row">{{ $history->logged_at }}</th>
-                                    <th scope="row">{{ $history->logged_out_at }}</th>
+                                    <th scope="row">{!! $history->id !!}</th>
+                                    <th scope="row">{!! $history->logged_at !!}</th>
+                                    <th scope="row">{!! $history->logged_out_at !!}</th>
+                                    {{-- <th scope="row">{{ timeDuration($history->logged_at, $history->logged_out_at) }}</th> --}}
                                     <th scope="row"></th>
+
                                 </tr>
                             @endforeach
-                            {{$histories->links()}}
                         @else
                             <h3>No Data Found</h3>
-                        @endif --}}
+                        @endif
                     </tbody>
                 </table>
+                {{ $histories->links()}}
            </div>
         </div>
 

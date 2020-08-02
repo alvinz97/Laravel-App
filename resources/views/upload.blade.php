@@ -27,7 +27,7 @@
                                     <input type="file" name="image_source" id="">
                                 </div>
 
-                               <a href="/profile"> <button type="submit" class="btn btn-sm btn-warning"> Go Back </button></a>
+                               <a href="/profile"> <button type="button" class="btn btn-sm btn-warning"> Go Back </button></a>
                                 <input type="submit" class="btn btn-sm btn-primary">
                             </form>
                         </div>

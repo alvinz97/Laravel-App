@@ -22,9 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'ProfileController@index');
+Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::post('/profile', 'ProfileController@upload');
+Route::post('/profile', 'ProfileController@upload')->name('upload');
 
 Route::get('/upload', function () {
     return view('upload');

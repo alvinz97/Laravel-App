@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LoginHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -21,7 +22,11 @@ class ProfileController extends Controller
     
     public function index()
     {
-        return view('profile', array('user' => Auth::user() ));
+
+        $histories = LoginHistory::whereUserId(Auth::user()->id)->latest()->paginate(9);
+        // $histories = LoginHistory::all();
+
+        return view('profile')->with('histories', $histories);
     }
 
     public function upload(Request $req) {
@@ -44,7 +49,7 @@ class ProfileController extends Controller
             }
             $user->img_url = $fileNameToStore;
             $user->save();
-        return view('profile', array('user' => Auth::user()));
+        return view('upload', array('user' => Auth::user()));
     }
 
     /**
