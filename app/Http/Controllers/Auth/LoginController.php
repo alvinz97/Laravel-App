@@ -51,6 +51,9 @@ class LoginController extends Controller
     
     public function locked() {
 
+        // $historyController = new LoginHistoryController;
+        // return $historyController->setLogoutTime(Auth::id());
+
         if(!session('lock-expires-at')){
             return redirect('/home');
         }
@@ -64,8 +67,8 @@ class LoginController extends Controller
 
     public function unlock(Request $request){
 
-        $historyController = new LoginHistoryController;
-        return $historyController->create(Auth::id());
+        // $historyController = new LoginHistoryController;
+        // return $historyController->create(Auth::id());
 
         $check = Hash::check($request->input('password'), $request->user()->password);
 

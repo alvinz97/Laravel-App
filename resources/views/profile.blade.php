@@ -24,6 +24,7 @@
                                     <th scope="row">{!! $history->logged_at !!}</th>
                                     <th scope="row">{!! $history->logged_out_at !!}</th>
                                     {{-- <th scope="row">{{ timeDuration($history->logged_at, $history->logged_out_at) }}</th> --}}
+                                    {{-- <th scope="row">{{ $history->logged_at->diffInDays($history->logged_out_at) }}</th> --}}
                                     <th scope="row"></th>
 
                                 </tr>
